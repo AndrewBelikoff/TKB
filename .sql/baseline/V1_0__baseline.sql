@@ -4,7 +4,7 @@ CREATE TABLE `users`
     `id`    int unsigned NOT NULL AUTO_INCREMENT,
     `name`  varchar(30),
     `email` varchar(30),
-    `ip`    int unsigned,
+    `password`    varchar(32),
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb3;

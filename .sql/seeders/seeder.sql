@@ -1,10 +1,10 @@
-INSERT users VALUES (1,'Петя', 'petr1@mail.ru', INET_ATON('192.168.99.10'));
-INSERT users VALUES (2,'Вася', 'vasil2@yandex.ru', INET_ATON('192.168.99.11'));
-INSERT users VALUES (3, 'admin', 'admin@tkbbank.ru', INET_ATON('127.0.0.12'));
+INSERT users VALUES (1,'Петя', 'petr1@mail.ru', md5('123'));
+INSERT users VALUES (2,'Вася', 'vasil2@yandex.ru', md5('abc'));
+INSERT users VALUES (3, 'admin', 'admin@tkbbank.ru', md5('admin'));
 
 INSERT questions VALUES (1,'Дни недели', 'Какой ваш любимый день недели?', 'single');
 INSERT questions VALUES (2,'Пальцы', 'Выберите любимые пальцы рук', 'multi');
-INSERT questions VALUES (3,'ПДД', 'Кто первый должен проехать перекрёсток?', 'single');
+INSERT questions VALUES (3,'ПДД', 'Кто должен проехать перекрёсток первым?', 'single');
 INSERT questions VALUES (4, 'Глаза в небе', 'Укажите допустимый цвет глаз у пилота перед вылетом', 'multi');
 
 INSERT options VALUES (1,1, 'понедельник');
