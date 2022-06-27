@@ -1,13 +1,5 @@
 <?php
 
-$debug = (isset($_REQUEST['alef_debug']) && $_REQUEST['alef_debug']==1);
-if (!isset($_SERVER['SERVER_NAME']) || in_array($_SERVER['SERVER_NAME'], ["localhost"]) || $debug) {
-    ini_set("display_errors", "On");
-    error_reporting(E_ALL & ~E_NOTICE);
-} else {
-    ini_set("display_errors", "Off");
-}
-
 if (file_exists(__DIR__."/../db.cfg.php")) {
     include __DIR__."/../db.cfg.php";
     $dbConnection = new PDO('mysql:dbname='.DB_NAME.';host='.DB_HOST.';charset=utf8', DB_USER, DB_PASS);
@@ -37,8 +29,8 @@ function q($sql, $params) // запрос к базе — короткое им�
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     } catch (Exception $e) {
-        $debug = (isset($_REQUEST['alef_debug']) && $_REQUEST['alef_debug']==1);
-        if (!$_SERVER['SERVER_NAME'] || in_array($_SERVER['SERVER_NAME'], ["test-genesis.alef.im", "devtest-genesis.alef.im", "localhost"]) || $debug) {
+
+        if (!$_SERVER['SERVER_NAME'] || in_array($_SERVER['SERVER_NAME'], ["localhost"])) {
             echo "<pre>";
             print_r($e);
             echo "\n\n\n------- \n\n\n";
@@ -61,8 +53,8 @@ function q1($sql, $params) //запрос одной строчки
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     } catch (Exception $e) {
-        $debug = (isset($_REQUEST['alef_debug']) && $_REQUEST['alef_debug']==1);
-        if (!$_SERVER['SERVER_NAME'] || in_array($_SERVER['SERVER_NAME'], ["test-genesis.alef.im", "devtest-genesis.alef.im", "localhost"]) || $debug) {
+
+        if (!$_SERVER['SERVER_NAME'] || in_array($_SERVER['SERVER_NAME'], ["localhost"])) {
             echo "<pre>";
             print_r($e);
             echo "\n\n\n------- \n\n\n";
@@ -91,8 +83,8 @@ function qi($sql, $params, $ignore_exceptions=0) // Используется д�
         if ($ignore_exceptions) {
             return;
         }
-        $debug = (isset($_REQUEST['alef_debug']) && $_REQUEST['alef_debug']==1);
-        if (!$_SERVER['SERVER_NAME'] || in_array($_SERVER['SERVER_NAME'], ["test-genesis.alef.im", "devtest-genesis.alef.im", "localhost"]) || $debug) {
+
+        if (!$_SERVER['SERVER_NAME'] || in_array($_SERVER['SERVER_NAME'], ["localhost"])) {
             echo "<pre>";
             print_r($e);
             echo "\n\n\n------- \n\n\n";

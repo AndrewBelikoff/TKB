@@ -22,7 +22,7 @@ function getFreq($user, $question)
     }
 
     if (count($freq) && max($freq) !== 0) {
-        $div = '<div >Пользователь ' . $user['name'] . ' уже отвечал на этот вопрос, поэтому ему доступна информация: чаще всего выбирают ответы: ';
+        $div = '<p class="answered">Пользователь ' . $user['name'] . ' уже отвечал на этот вопрос, поэтому ему доступна информация: чаще всего выбирают ответы: ';
         foreach ($freq as $key => $value) {
             if ($value === max($freq)) {
                 $max_id = $key;
@@ -32,7 +32,7 @@ function getFreq($user, $question)
             }
         }
         $div = mb_substr($div, 0, -2);
-        echo($div . '</div>');
+        echo($div . '</p>');
     }
 
 
